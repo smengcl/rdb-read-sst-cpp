@@ -27,11 +27,10 @@ int main() {
     std::unique_ptr<Iterator> iter(reader.NewIterator(ropts));
     iter->SeekToFirst();
 
-    if (!iter->Valid()) {
-        std::cout << "Invalid iterator" << std::endl;
-        return 1;
+    while (iter->Valid()) {
+        std::cout << "Key: " << iter->key().ToString() << std::endl;
+        iter->Next();
     }
 
-    std::cout << "Key: " << iter->key().ToString() << std::endl;
     return 0;
 }
