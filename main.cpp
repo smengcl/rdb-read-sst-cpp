@@ -1,10 +1,6 @@
 #include <iostream>
-#include <string>
-#include <filesystem>
 
-#include "rocksdb/db.h"
 #include "rocksdb/options.h"
-#include "rocksdb/slice.h"
 #include "rocksdb/sst_file_reader.h"
 
 using ROCKSDB_NAMESPACE::Iterator;
@@ -17,7 +13,6 @@ int main() {
 
     Options options;
     SstFileReader reader(options);
-//    std::cout << std::filesystem::current_path() << std::endl;
     ROCKSDB_NAMESPACE::Status status = reader.Open("../000063.sst");
     assert(status.ok());
 
